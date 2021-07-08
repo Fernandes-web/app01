@@ -3,29 +3,38 @@ import { Component, OnInit } from '@angular/core';
 // Importa dependências
 import { ActivatedRoute } from '@angular/router';
 import {
- AngularFirestore,
- AngularFirestoreDocument,
+  AngularFirestore,
+  AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
- selector: 'app-view',
- templateUrl: './view.page.html',
- styleUrls: ['./view.page.scss'],
+  selector: 'app-view',
+  templateUrl: './view.page.html',
+  styleUrls: ['./view.page.scss'],
 })
 export class ViewPage implements OnInit {
 
- public id: string;
- item: Observable<any>;
+  // Id do artigo será armazenado aqui
+  public id: string;
 
- constructor(
-   // Injeção de dependências
-   public activatedRoute: ActivatedRoute,
-   private afs: AngularFirestore
- ) { }
+  // O artigo completo será armazenado aqui
+  item: Observable<any>;
 
- ngOnInit() {
-   this.id = this.activatedRoute.snapshot.paramMap.get('id');
-   this.item = this.afs.doc<any>(`articles/${this.id}`).valueChanges();
- }
+  constructor(
+    // Injeção de dependências
+    public activatedRoute: ActivatedRoute,
+    private afs: AngularFirestore,
+    public auth: AngularFireAuth
+  ) { }
+
+  ngOnInit() {
+
+    // Obter o ID da rota e armazena em id
+    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+
+    // Obter o artigo do firestore à partir do ID
+    this.item = this.afs.doc<any>(`articles/${this.id}`).valueChanges();
+  }
 }
