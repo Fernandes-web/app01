@@ -15,13 +15,21 @@
         <img src="assets/user.png" alt="logue-se" routerLink="/login">
       </ion-thumbnail>
     </ng-template>
-    
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding-horizontal">
+  <ion-img src="assets/sobre.jpg" alt="Meu App 01" class="logotipo"></ion-img>
+  <p>Esse aplicativo foi desenvolvido com o intuito de atualizar os usuários em tempo real sobre as principais notícias do dia a dia.</p>
 
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam id, esse minima maiores quo quam modi unde
-    corrupti dolores cupiditate, accusamus ipsam officia harum repellat officiis nisi numquam atque odit?</p>
+    <ion-button class="ion-margin-vertical" expand="block" color="secondary" routerLink="/home">
+      <ion-icon name="home" slot="start"></ion-icon>
+      Página Inicial
+    </ion-button>
+
+    <ion-text class="ion-text-center ion-padding copyright">
+      &copy; Copyrigth 2021 Enaila Fernandes
+    </ion-text>
 
 </ion-content>
